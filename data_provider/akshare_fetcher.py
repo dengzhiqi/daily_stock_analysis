@@ -1902,13 +1902,13 @@ if __name__ == "__main__":
     print("测试行业板块排名获取")
     print("=" * 50)
     try:
-        rankings = fetcher.get_sector_rankings(n=5)
+        rankings = fetcher.get_sector_rankings(n=10)
         if rankings:
             top, bottom = rankings
-            print("涨幅榜 Top 5:")
+            print("涨幅榜 Top 10:")
             for sector in top:
                 print(f"{sector['name']}: {sector['change_pct']}%")
-            print("\n跌幅榜 Top 5:")
+            print("\n跌幅榜 Top 10:")
             for sector in bottom:
                 print(f"{sector['name']}: {sector['change_pct']}%")
         else:

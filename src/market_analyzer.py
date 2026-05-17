@@ -369,7 +369,7 @@ Focus on index trend, liquidity, and sector rotation to shape the next-session t
         try:
             logger.info("[大盘] 获取板块涨跌榜...")
 
-            top_sectors, bottom_sectors = self.data_manager.get_sector_rankings(5)
+            top_sectors, bottom_sectors = self.data_manager.get_sector_rankings(10)
 
             if top_sectors or bottom_sectors:
                 overview.top_sectors = top_sectors
@@ -698,11 +698,11 @@ Focus on index trend, liquidity, and sector rotation to shape the next-session t
                 ])
             else:
                 lines.extend([
-                    "#### 领涨板块 Top 5",
+                    "#### 领涨板块 Top 10",
                     "| 排名 | 板块 | 涨跌幅 |",
                     "|------|------|--------|",
                 ])
-            for rank, sector in enumerate(overview.top_sectors[:5], 1):
+            for rank, sector in enumerate(overview.top_sectors[:10], 1):
                 lines.append(
                     f"| {rank} | {sector.get('name', '-')} | {self._format_signed_pct(sector.get('change_pct'))} |"
                 )
@@ -717,11 +717,11 @@ Focus on index trend, liquidity, and sector rotation to shape the next-session t
                 ])
             else:
                 lines.extend([
-                    "#### 领跌板块 Top 5",
+                    "#### 领跌板块 Top 10",
                     "| 排名 | 板块 | 涨跌幅 |",
                     "|------|------|--------|",
                 ])
-            for rank, sector in enumerate(overview.bottom_sectors[:5], 1):
+            for rank, sector in enumerate(overview.bottom_sectors[:10], 1):
                 lines.append(
                     f"| {rank} | {sector.get('name', '-')} | {self._format_signed_pct(sector.get('change_pct'))} |"
                 )
